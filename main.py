@@ -15,8 +15,8 @@ def main():
           f"Found {word_count} total words\n"
           f"------------ Character Count ------------")
     for char_dict in char_list:
-        for char, number in char_dict.items():
-            print(f"{char}: {number}")
+        char, number = list(char_dict.items())[0]
+        print(f"{char}: {number}")
     print("============ END ============")
 
 main()
