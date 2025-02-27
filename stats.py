@@ -19,3 +19,18 @@ def count_characters(book_text):
         elif char in char_dict:
             char_dict[char] += 1
     return char_dict
+
+def sort_key(item):
+    return item[1]
+
+def sort_char_dict(count_characters):
+    char_dict = count_characters
+    sorted_dicts = []
+    dict_list = []
+    for char, number in char_dict.items():
+        if char.isalpha() == True:
+            sorted_dicts.append((char, number))
+    sorted_dicts.sort(reverse=True, key=sort_key)
+    for char, number in sorted_dicts:
+        dict_list.append({char: number})
+    return dict_list
