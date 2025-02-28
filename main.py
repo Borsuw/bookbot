@@ -18,5 +18,20 @@ def main():
         char, number = list(char_dict.items())[0]
         print(f"{char}: {number}")
     print("============ END ============")
+    print("Would you like to print the output to a file? (y/n)")
+    user_input = input()
+    if user_input == "y" or "Y" or "yes" or "Yes":
+        with open("report.txt", "w") as f:
+            f.write(f"============ BOOKBOT ============\n"
+                    f"Analyzing book found at {book_path}\n"
+                    f"------------ Word Count ------------\n"
+                    f"Found {word_count} total words\n"
+                    f"------------ Character Count ------------\n")
+            for char_dict in char_list:
+                char, number = list(char_dict.items())[0]
+                f.write(f"{char}: {number}\n")
+            f.write("============ END ============\n")
+        print("Output written to report.txt")
+    
 
 main()
