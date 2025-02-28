@@ -1,3 +1,5 @@
+import unicodedata
+
 def get_book_text(file_path):
     with open(file_path) as f:
         file_contents = f.read()
@@ -28,7 +30,7 @@ def sort_char_dict(count_characters):
     sorted_dicts = []
     dict_list = []
     for char, number in char_dict.items():
-        if char.isalpha() == True:
+        if char.isalpha() == True and unicodedata.bidirectional(char) == "L":
             sorted_dicts.append((char, number))
     sorted_dicts.sort(reverse=True, key=sort_key)
     for char, number in sorted_dicts:
