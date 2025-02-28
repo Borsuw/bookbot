@@ -13,6 +13,11 @@ def generate_report(book_path, word_count, char_list):
     report += "============ END ============\n"
     return report
 
+def write_report(report):
+    with open("report.txt", "w") as f:
+        f.write(report)
+    print("Output written to report.txt, exiting...")
+
 def main():
     if len(sys.argv) != 2:
         print("Usage: python3 main.py <relative path to book>")
@@ -26,9 +31,7 @@ def main():
     print("Would you like to print the output to a file? (y/n)")
     user_input = input().strip().lower()
     if user_input in ["y", "yes"]:
-        with open("report.txt", "w") as f:
-            f.write(report)
-        print("Output written to report.txt, exiting...")
+        write_report(report)
     else:
         print("No report saved, exiting...")
     
