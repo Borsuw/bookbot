@@ -19,8 +19,8 @@ def main():
         print(f"{char}: {number}")
     print("============ END ============")
     print("Would you like to print the output to a file? (y/n)")
-    user_input = input()
-    if user_input == "y" or "Y" or "yes" or "Yes":
+    user_input = input().strip().lower()
+    if user_input in ["y", "yes"]:
         with open("report.txt", "w") as f:
             f.write(f"============ BOOKBOT ============\n"
                     f"Analyzing book found at {book_path}\n"
@@ -31,7 +31,8 @@ def main():
                 char, number = list(char_dict.items())[0]
                 f.write(f"{char}: {number}\n")
             f.write("============ END ============\n")
-        print("Output written to report.txt")
+        print("Output written to report.txt, exiting...")
+    else:
+        print("No report saved, exiting...")
     
-
 main()
