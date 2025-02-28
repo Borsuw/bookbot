@@ -16,10 +16,10 @@ def count_characters(book_text):
     book_text_lower = book_text.lower()
     char_dict = {}
     for char in book_text_lower:
-        if char not in char_dict:
-            char_dict[char] = 1
-        elif char in char_dict:
+        if char in char_dict:
             char_dict[char] += 1
+        else:
+            char_dict[char] = 1
     return char_dict
 
 def sort_key(item):
