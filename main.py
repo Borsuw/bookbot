@@ -1,4 +1,5 @@
 import sys
+import os
 from stats import get_book_text, count_words, count_characters, sort_char_dict
 
 def generate_report(book_path, word_count, char_list):
@@ -14,9 +15,13 @@ def generate_report(book_path, word_count, char_list):
     return report
 
 def write_report(report):
-    with open("report.txt", "w") as f:
+    report_number = 1
+    while os.path.exists(f"report{report_number}.txt"):
+        report_number += 1
+    report_filename = f"report{report_number}.txt"
+    with open(report_filename, "w") as f:
         f.write(report)
-    print("Output written to report.txt, exiting...")
+    print(f"Output written to {report_filename}, exiting...")
 
 def main():
     if len(sys.argv) != 2:
@@ -35,4 +40,5 @@ def main():
     else:
         print("No report saved, exiting...")
     
-main()
+if __name__ == "__main__":
+    main()

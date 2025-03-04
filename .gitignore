@@ -1,4 +1,4 @@
 /books
 .DS_Store
 *pycache*
-report.txt
+report*
